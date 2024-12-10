@@ -8,7 +8,7 @@
 void ALobbyGameMode::PostLogin(APlayerController* NewPlayer)
 {
 	Super::PostLogin(NewPlayer);
-
+	PlayersConnected.Add(NewPlayer);
 	int32 NumberOfPlayers = GameState.Get()->PlayerArray.Num();
 	if(NumberOfPlayers == 2)
 	{
@@ -16,7 +16,9 @@ void ALobbyGameMode::PostLogin(APlayerController* NewPlayer)
 		if(World)
 		{
 			bUseSeamlessTravel = false;
+			LoadingScreen();
 			World->ServerTravel(FString("/Game/Maps/World1?listen"));
 		}
 	}
 }
+
