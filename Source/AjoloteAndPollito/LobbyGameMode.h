@@ -17,6 +17,10 @@ class AJOLOTEANDPOLLITO_API ALobbyGameMode : public AGameMode
 public:
 	virtual void PostLogin(APlayerController* NewPlayer) override;
 	UFUNCTION(BlueprintImplementableEvent)
+	void GameReady();
+	UFUNCTION(BlueprintCallable)
+	void StartGame();
+	UFUNCTION(BlueprintImplementableEvent)
 	void LoadingScreen();
 
 	UPROPERTY(BlueprintReadWrite)

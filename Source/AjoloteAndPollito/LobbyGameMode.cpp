@@ -12,13 +12,18 @@ void ALobbyGameMode::PostLogin(APlayerController* NewPlayer)
 	int32 NumberOfPlayers = GameState.Get()->PlayerArray.Num();
 	if(NumberOfPlayers == 2)
 	{
-		UWorld* World = GetWorld();
-		if(World)
-		{
-			bUseSeamlessTravel = false;
-			LoadingScreen();
-			World->ServerTravel(FString("/Game/Maps/World1?listen"));
-		}
+		GameReady();
+	}
+}
+
+void ALobbyGameMode::StartGame()
+{
+	UWorld* World = GetWorld();
+	if(World)
+	{
+		bUseSeamlessTravel = false;
+		LoadingScreen();
+		World->ServerTravel(FString("/Game/Maps/World1?listen"));
 	}
 }
 
